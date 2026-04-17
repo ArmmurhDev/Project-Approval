@@ -6,371 +6,12 @@
     <title>Topic Verifier | Submit Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f0f4f0;
-            color: #1e2a1e;
-            line-height: 1.5;
-        }
-
-        /* Kaduna Polytechnic Colour Scheme */
-        :root {
-            --kaduna-green: #0a5c36;
-            --kaduna-green-light: #2a7a4a;
-            --kaduna-gold: #e6a017;
-            --kaduna-gold-dark: #c47d0c;
-            --kaduna-red: #c0392b;
-            --kaduna-cream: #fef9e6;
-            --kaduna-charcoal: #2c3e2c;
-            --kaduna-white: #ffffff;
-            --kaduna-gray: #e8ece8;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-            --radius: 20px;
-            --radius-sm: 14px;
-        }
-
-        /* Layout */
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            background: linear-gradient(145deg, var(--kaduna-green) 0%, #064d2a 100%);
-            color: white;
-            padding: 2rem 1.5rem;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-            z-index: 100;
-            box-shadow: 2px 0 20px rgba(0,0,0,0.08);
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid rgba(255,215,120,0.3);
-        }
-
-        .logo-icon {
-            background: var(--kaduna-gold);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--kaduna-green);
-        }
-
-        .logo-text h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .logo-text p {
-            font-size: 0.7rem;
-            opacity: 0.8;
-        }
-
-        .nav-menu {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .nav-item {
-            margin-bottom: 0.75rem;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 18px;
-            border-radius: 50px;
-            color: rgba(255,255,240,0.85);
-            text-decoration: none;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-
-        .nav-link i {
-            width: 24px;
-            font-size: 1.2rem;
-        }
-
-        .nav-link.active, .nav-link:hover {
-            background: rgba(230,160,23,0.2);
-            color: var(--kaduna-gold);
-            backdrop-filter: blur(4px);
-        }
-
-        /* Main content */
-        .main-content {
-            flex: 1;
-            margin-left: 280px;
-            padding: 1.8rem 2rem;
-            transition: margin 0.3s;
-        }
-
-        /* Top bar */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--kaduna-white);
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
-            flex-wrap: wrap;
-        }
-
-        .page-title h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--kaduna-charcoal);
-        }
-
-        .student-profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .student-name {
-            font-weight: 600;
-            background: var(--kaduna-gray);
-            padding: 6px 16px;
-            border-radius: 40px;
-        }
-
-        .logout-btn {
-            background: rgba(192,57,43,0.1);
-            color: var(--kaduna-red);
-            padding: 8px 18px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-
-        .logout-btn:hover {
-            background: var(--kaduna-red);
-            color: white;
-        }
-
-        /* Form Card */
-        .form-card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 2rem;
-        }
-
-        .card-header {
-            background: var(--kaduna-cream);
-            padding: 1.2rem 2rem;
-            border-bottom: 3px solid var(--kaduna-gold);
-        }
-
-        .card-header h2 {
-            color: var(--kaduna-charcoal);
-            font-size: 1.4rem;
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--kaduna-charcoal);
-        }
-
-        .form-group label .required {
-            color: var(--kaduna-red);
-        }
-
-        .form-group input, 
-        .form-group textarea, 
-        .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 30px;
-            border: 1px solid #ddd;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-
-        .form-group input:focus, 
-        .form-group textarea:focus, 
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--kaduna-gold);
-            box-shadow: 0 0 0 3px rgba(230,160,23,0.1);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .btn-submit {
-            background: var(--kaduna-green);
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-        }
-
-        .btn-submit:hover {
-            background: #064d2a;
-            transform: scale(0.98);
-        }
-
-        .btn-reset {
-            background: #eef2ee;
-            color: var(--kaduna-charcoal);
-            border: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--kaduna-charcoal);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            display: none;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-        }
-        .toast.success { background: var(--kaduna-green); }
-        .toast.error { background: var(--kaduna-red); }
-
-        .mobile-menu-toggle {
-            display: none;
-            background: var(--kaduna-green);
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            padding: 8px 16px;
-            border-radius: 30px;
-            margin-bottom: 1rem;
-            cursor: pointer;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .sidebar {
-                transform: translateX(-100%);
-                position: fixed;
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .mobile-menu-toggle {
-                display: inline-block;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .main-content {
-                padding: 1rem;
-            }
-            .top-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            .card-body {
-                padding: 1.2rem;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .btn-submit, .btn-reset {
-                width: 100%;
-                justify-content: center;
-                margin-bottom: 0.5rem;
-            }
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
-            color: #6f7e6f;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/student.css">
 </head>
 <body>
 <div class="app-container">
     <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i> Menu</button>
-    <aside class="sidebar" id="sidebar">
-        <div class="logo-area">
-            <div class="logo-icon"><i class="fas fa-paper-plane"></i></div>
-            <div class="logo-text">
-                <h2>Topic Verifier</h2>
-                <p>Kaduna Polytechnic</p>
-            </div>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="student_dashboard.html" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active"><i class="fas fa-upload"></i> Submit Project</a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-history"></i> My Submissions</a></li>
-            <li class="nav-item"><a href="#" id="logoutLink" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
-    </aside>
+    <?php $currentPage = 'submit_project'; include '../include/student_sidebar.php'; ?>
 
     <main class="main-content">
         <div class="top-bar">
@@ -393,11 +34,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Full Name <span class="required">*</span></label>
-                            <input type="text" id="fullName" value="Amina Bello" readonly style="background:#f5f5f5;">
+                            <input type="text" id="fullName" value="Amina Bello" readonly>
                         </div>
                         <div class="form-group">
                             <label>Registration Number <span class="required">*</span></label>
-                            <input type="text" id="regNo" value="KP/CS/2022/001" readonly style="background:#f5f5f5;">
+                            <input type="text" id="regNo" value="KP/CS/2022/001" readonly>
                         </div>
                     </div>
 
@@ -427,7 +68,7 @@
                     <div class="form-group">
                         <label>Topic Keywords <span class="required">*</span></label>
                         <input type="text" id="topics" placeholder="e.g., Machine Learning, Computer Vision, Agriculture" required>
-                        <small style="color:#6f7e6f;">Separate keywords with commas</small>
+                        <small>Separate keywords with commas</small>
                     </div>
 
                     <div class="form-group">
@@ -445,10 +86,10 @@
                         <input type="text" id="supervisor" placeholder="e.g., Dr. Fatima Bello">
                     </div>
 
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <div class="modal-buttons">
                         <button type="button" class="btn-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Submit Proposal</button>
                         <button type="reset" class="btn-reset" id="resetBtn"><i class="fas fa-undo-alt"></i> Clear Form</button>
-                        <a href="student_dashboard.html" class="btn-reset" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+                        <a href="student_dashboard.php" class="btn-reset"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
                     </div>
                 </form>
             </div>
